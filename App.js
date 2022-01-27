@@ -1,10 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Switch } from 'react-native';
 
 export default function App() {
+  const [isEnabled, setIsEnabled] = React.useState(false);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>{isEnabled.toString()}</Text>
+      <Switch
+        value={isEnabled}
+        onValueChange={(value) => setIsEnabled(value)}
+        trackColor={{ false: "#ff0000", true: "#0000ff" }}
+        thumbColor={isEnabled ? "#00ff00" : "#0000ff"}
+        ios_backgroundColor="#ff0000"
+      />
       <StatusBar style="auto" />
     </View>
   );
